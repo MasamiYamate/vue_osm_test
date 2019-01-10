@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MapView from '@/components/MapView'
+import BaseView from '@/components/BaseView'
 
 Vue.use(Router)
 
@@ -9,7 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'Map',
-      component: MapView
+      component: BaseView
     }
   ]
 })

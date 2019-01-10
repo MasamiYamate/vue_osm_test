@@ -19,6 +19,15 @@ export default {
         }
     },
     methods: {
+        initialize () {
+            this.createMap()
+            this.mapview.on("click", ev => {
+                var lonlat = transform(ev.coordinate, 'EPSG:3857', 'EPSG:4326')
+                this.selectLatLong = lonlat
+                this.$parent.selectLonLat = lonlat
+                this.$emit('panretMessage')
+            })
+        },
         createMap () {
             this.mapview = new Map ({
                 target: 'OSMCanvas',
@@ -35,11 +44,6 @@ export default {
         }
     },
     mounted() {
-        this.createMap()
-        this.mapview.on("click", ev => {
-            var lonlat = transform(ev.coordinate, 'EPSG:3857', 'EPSG:4326')
-            console.log(lonlat)
-        })
 
     }
 }
